@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"  href="semantic.css">
+    <link rel="stylesheet"  href="alert.css">
+   
+</head>
+
+<body>
+
+    <div class="container" id="box">
+        <!-- Instructions -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">×</span>
+                    <h2>Instructions</h2>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <ol type="1" style="font-size: 18px;color:black;text-align: justify;line-height: 1.5em;">
+                            <li>Select the number of processes (P) and number of resources (R) and click the <b>SUBMIT</b> button to initialize the data structures, including the Allocation Matrix, Available Matrix (vector), and Maximum Matrix.</li>
+                            <li>Enter the calculated values into the Need Matrix using the following formula:<br>
+                               <center>
+                                <b style="color:blue">Need matrix = Maximum matrix - Allocation matrix</b>
+                               </center>
+                            </li>
+                            <li>Click on the<b> CHECK</b> button to verify the need matrix.</li>
+                            <li>Click on the <b>START</b>button to initialize the Work and Finish Vectors.</li>
+                            <li>Click on the <b>NEXT</b> button to: 
+                                <ul style="margin-left: 20px;">
+                                    <li>Check if the need of process P<sub>i</sub> can be satisfied with the current Work vector using: 
+                                    <center><b style="color:blue">Need<sub>i</sub> <= Work</b></center>
+                                  
+                                </ul>
+                            </li>
+                            <li>Repeat Step 5 until you obtain either a safe or unsafe sequence based on the completion status of the processes.</li>
+                            <p><b style="color:blue">NOTE 1: </b>The highlighted row in the Allocation Matrix indicates that the process P<sub>i</sub> has been included in the safe sequence.<br>
+                                <b style="color:blue">NOTE 2: </b>Read the alerts carefully.</p>
+                        </ol>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <!-- header -->
+        <header class="header">
+            <a class="header-text" id="myBtn" style="padding-top: 8px" href="#">INSTRUCTIONS</a>
+        </header>
+        
+        <body>
+            <div class="sec-con-container">
+
+            
+                    <div style="width:95%;margin-left: 10px;">
+                            <h2 style="padding-top: 158px; padding-left: 81px;">Select the number of processes (P) and resources(R) you want for the Banker's algorithm to run</h2>
+                            <label style="font-size: 21px; padding-left: 81px;"><input type="radio" name="processes_resources" value="3_2"> P = 3, R = 2</label><br>
+                            <label style="font-size: 21px; padding-left: 81px;"><input type="radio" name="processes_resources" value="4_4"> P = 4, R = 4</label><br>
+                            <label style="font-size: 21px; padding-left: 81px;"><input type="radio" name="processes_resources" value="4_1"> P = 4, R = 1</label><br>
+                            <label style="font-size: 21px; padding-left: 81px;"><input type="radio" name="processes_resources" value="5_3"> P = 5, R = 3</label><br>
+                            <label style="font-size: 21px; padding-left: 81px;"><input type="radio" name="processes_resources" value="5_4"> P = 5, R = 4</label><br>
+                            <button class="button-19" role="button" style="margin-left: 368px;margin-top: 25px; width: 91px;" onclick="navigateToIndex1()">
+                                <span class="text">SUBMIT</span>
+                            </button>
+                    </div>
+
+        
+        
+        
+        </body>
+
+
+
+
+        <!-- footer -->
+        <footer class="footer" style="margin-left: -10px;">
+            <span class="footer-text" style="
+            margin-left: 322px;
+        ">© 2024 Virtual Labs, IIT Roorkee</span>
+        </footer>
+
+    </div>
+    <script src="script.js"></script>
+    <script src="quantumalert.js" charset="utf-8"></script>
+ 
+    <script>
+        
+        function navigateToIndex1() {
+            const selectedValue = document.querySelector('input[name="processes_resources"]:checked');
+            if (selectedValue) {
+                const [processes, resources] = selectedValue.value.split('_');
+                window.location.href = `index1.html?processes=${processes}&resources=${resources}`;
+            } else {
+                Qual.warning("","Please select an option before submitting.");
+            }
+        }
+        
+        function navigateToPage(pageUrl) {
+            // Redirect the user to the specified page
+            window.location.href = pageUrl;
+        }
+
+        
+        const pageAccessedByReload = (
+        (window.performance.navigation && window.performance.navigation.type === 1) ||
+            window.performance
+            .getEntriesByType('navigation')
+            .map((nav) => nav.type)
+            .includes('reload')
+        );
+        if(pageAccessedByReload==true){
+            window.location.href="index.html"
+        }
+</script>
+
+</body>
+
+</html>
